@@ -1,0 +1,45 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anubhav Jokes</title>
+    <style>
+        body{
+            background-color: black;
+        }
+        span{
+            color: white;
+            font-size: 20px;
+            font-family: Consolas;
+        }
+    </style>
+</head>
+<body>
+  <span id="api">Random jokes will be showed here!</span>
+    <script>
+        // const f = await fetch('');
+        var newuser=()=>{
+  fetch("https://github.com/123anubhav/jokes/blob/main/joke.json")
+  .then(function(response){
+    return response.json();
+  })
+  .then(function(data){
+    const random = Math.floor(Math.random() * data.length);
+    console.log(data[random]);
+    const sp = document.getElementById('api');
+    sp.innerHTML = `
+    <span id="api">
+        <br><br>
+        {<br>
+            "setup":"${data[random].setup}",<br>
+            "punchline":"${data[random].punchline}"<br>
+        }
+        </span>
+    `;
+  })
+}
+newuser();
+    </script>
+</body>
+</html>
